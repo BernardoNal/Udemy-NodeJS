@@ -1,8 +1,7 @@
-var express = require('express');
-var app = express();
+var app = require('./config/server')
 
-app.set('view engine','ejs');
-
+//var msg = require('./mod_teste')();--Exemple
+/*--version section3
 app.get('/',function(req,res){
     res.render('home/index');
 })
@@ -13,10 +12,15 @@ app.get('/formulario_noticia',function(req,res){
 app.get('/noticias',function(req,res){
     res.render('noticias/noticias');
 })
-
 app.get('/games',function(req,res){
     res.render('secao/games');
-})
+})*/
+
+var rotaHome = require('./app/routes/home')(app);
+
+var rotaNoticia = require('./app/routes/notica')(app);
+
+var rotaFormularioNoticia = require('./app/routes/form_noticia')(app);
 
 app.listen(4200,function(){
     console.log('Servido Online');
