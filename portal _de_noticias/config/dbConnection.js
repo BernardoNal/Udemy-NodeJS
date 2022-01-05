@@ -1,6 +1,6 @@
 var mysql = require('mysql');
 
-module.exports = function(){
+var ConnectMySQL = function(){
     return connection = mysql.createConnection({
         host : 'localhost',
         user : 'root',
@@ -8,4 +8,8 @@ module.exports = function(){
         database : 'portal_noticias',
         insecureAuth: true
     });
+};
+
+module.exports = function(){
+    return ConnectMySQL;
 }
