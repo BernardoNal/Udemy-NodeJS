@@ -1,6 +1,6 @@
-module.exports=function(app){
-    app.get('/',function(req,res){
-        res.render('home/index');
+module.exports=function(App){
+    App.get('/',function(req,res){
+        App.app.controllers.home.index(App,req,res);
     })
     
 }
