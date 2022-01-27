@@ -8,7 +8,7 @@ const url = 'mongodb://localhost:27017/';
  var connMongoDB = function(){
   
   const client = new MongoClient(url);
-  client.connect();
+  
   
   return client;
 };
