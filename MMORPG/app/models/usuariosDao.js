@@ -4,12 +4,15 @@ function usuariosDao(connection){
 
 
 
-usuariosDao.prototype.inserirUsuario =  function  (usuario){
+usuariosDao.prototype.inserirUsuario =  function  (usuario,res){
         this._connection.connect();
         const database = this._connection.db("Got");
         const usuarios = database.collection("usuarios");
         // create a document to insert
         const result =  usuarios.insertOne(usuario);
+
+        usuario.msg = 2;
+        res.render("index",{validacao :{} ,dadosForm:usuario});
 
     //this._connection.close(); Necessário corrigir fechamento da conexao do banco erro:UnhandledPromiseRejectionWarning: MongoTopologyClosedError: Topology is closed
 }
@@ -33,14 +36,14 @@ usuariosDao.prototype.autenticar = function(usuario,req,res){
         }
         if(req.session.autirizado){
             res.redirect('jogo');
-            console.log(resultado);
+          
         }else{
-            res.render("index",{validacao :{} });
-            console.log(resultado);
+            usuario.msg = 1;
+            res.render("index",{validacao :{} ,dadosForm:usuario});
+           
         }
     })
 
-    //console.log(resultado);
 }
 
 

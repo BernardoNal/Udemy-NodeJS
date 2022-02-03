@@ -1,6 +1,6 @@
 module.exports.index = function (application,req,res) { 
 
-    res.render('index',{validacao :{} });
+    res.render('index',{validacao :{} ,dadosForm:{}});
  }
 
 module.exports.autenticar = function(application,req,res) { 
@@ -15,7 +15,7 @@ module.exports.autenticar = function(application,req,res) {
     var erros = req.validationErrors();
 
     if(erros){
-        res.render('index',{validacao : erros});
+        res.render('index',{validacao : erros,dadosForm : dadosForm});
         return;
     }
 

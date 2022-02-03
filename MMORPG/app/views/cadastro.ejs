@@ -14,15 +14,23 @@
 		<!-- incluindo css -->
 		<link href="css/style.css" rel="stylesheet">
 
+		<script>
+			$(document).ready( function(){
+
+			$('#btn_voltar').click(function(){
+				window.location.href = '/';
+			});
+		});
+		</script>
 	</head>
 
 	<body class="body-index">
 
 		<nav class="navbar navbar-default navbar-static-top">
 			<div class="container">
-				<form class="form-inline form-entrar">
+				<form class="form-inline form-entrar" action="/" method="get">
 					<div class="form-group">				
-						<button type="button" class="btn btn-success">Voltar</button>
+						<button type="button" class="btn btn-success" id ="btn_voltar">Voltar</button>
 					</div>
 				</form>
 			</div>

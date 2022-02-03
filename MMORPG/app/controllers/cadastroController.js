@@ -13,7 +13,6 @@ module.exports.cadastrar = function (application,req,res) {
     req.assert('casa','Precisa ser escolhido uma casa').notEmpty();
 
     var erros = req.validationErrors();
-
     if(erros){
         res.render('cadastro',{validacao : erros,dadosForm: dadosForm });
         return;
@@ -21,11 +20,13 @@ module.exports.cadastrar = function (application,req,res) {
     
     var connection = application.config.dbConnection;
     var usuariosDao = new application.app.models.usuariosDao(connection);
+    var jogoDao = new application.app.models.jogoDao(connection);
 
-    usuariosDao.inserirUsuario(dadosForm);
+    usuariosDao.inserirUsuario(dadosForm,res);
+    jogoDao.gerarParametros(dadosForm.usuario);
 
     //usuariosDao.encerraConexao();
-
-    res.send('podemos cadastrar');
+   
+    
     
 }
