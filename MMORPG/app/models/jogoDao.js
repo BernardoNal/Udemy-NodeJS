@@ -1,3 +1,4 @@
+//criar objeto para usar da busca do id
 var OBJECTID =  require('mongodb').ObjectId;
 
 function jogoDao(connection){
